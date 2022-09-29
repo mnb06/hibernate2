@@ -18,7 +18,7 @@ public class docController {
 
             sesion.beginTransaction();
 
-            sesion.save(d);
+            sesion.persist(d);
             sesion.getTransaction().commit();
 
             sf.close();
@@ -26,9 +26,10 @@ public class docController {
             
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Error. El documento no se ha creado");
             
         }
-        System.out.println("Error. El documento no se ha creado");
+        
 
     }
 

@@ -26,9 +26,9 @@ public class userController {
             
         } catch (Exception e) {
             e.printStackTrace();
-            
+            System.out.println("Error. El usuario no se ha creado");    
         }
-        System.out.println("Error. El usuario no se ha creado");
+        
 
     }
 

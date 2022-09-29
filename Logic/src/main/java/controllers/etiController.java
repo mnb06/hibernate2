@@ -26,9 +26,9 @@ public class etiController {
             
         } catch (Exception e) {
             e.printStackTrace();
-            
+            System.out.println("Error. La etiqueta no se ha creado");    
         }
-        System.out.println("Error. La etiqueta no se ha creado");
+        
 
     }
 
