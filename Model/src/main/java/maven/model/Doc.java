@@ -1,13 +1,16 @@
 package maven.model;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 
 @Entity  //Indica que es una entidad de la db
 @Table(name = "doc") // Indica a que tabla esta haciendo referencia
 public class Doc {
+
+    @Id
+	@Column(name = "iddoc")
+	private int id;
+
     @Column(name = "nombre")
     private String nombre;
 
