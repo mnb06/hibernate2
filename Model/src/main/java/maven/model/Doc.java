@@ -1,16 +1,24 @@
 package maven.model;
 
-import jakarta.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity  //Indica que es una entidad de la db
 @Table(name = "doc") // Indica a que tabla esta haciendo referencia
+
 public class Doc {
 
-    @Id
+	@Id
 	@Column(name = "iddoc")
-	private int id;
-
+    @SequenceGenerator(name="doc", sequenceName="doc_iddoc_seq", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="doc")
+    private Long iddoc;
+	
     @Column(name = "nombre")
     private String nombre;
 
@@ -25,13 +33,14 @@ public class Doc {
 
 
     public Doc(String nombre, String descripcion, String fecha, String emisor) {
-        this.nombre = nombre;
+    	this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.emisor = emisor;
     }
 
-    public String getNombre() {
+
+	public String getNombre() {
         return nombre;
     }
 
@@ -42,6 +51,7 @@ public class Doc {
     public String getDescripcion() {
         return descripcion;
     }
+    
 
     public void setDescripcion(String descripción) {
         this.descripcion = descripción;
@@ -64,3 +74,4 @@ public class Doc {
     }
 
 }
+
