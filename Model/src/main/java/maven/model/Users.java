@@ -1,17 +1,24 @@
 package maven.model;
 
-import jakarta.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity  //Indica que es una entidad de la db
 @Table(name = "users") // Indica a que tabla esta haciendo referencia
 
-public class User {
+public class Users {
 
 	@Id
 	@Column(name = "iduser")
-	private int id;
-
+    @SequenceGenerator(name="user", sequenceName="users_iduser_seq", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user")
+    private Long iduser;
+	
 	@Column(name = "nombre")
     private String nombre;
 
@@ -25,7 +32,7 @@ public class User {
 	private String puesto;
 	
 
-	public User(String nombre, String apellido, String correo, String puesto) {
+	public Users(String nombre, String apellido, String correo, String puesto) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
@@ -70,3 +77,4 @@ public class User {
 	}
     
 }
+
